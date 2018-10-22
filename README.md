@@ -7,7 +7,7 @@
 
 Step 1: [command line] $ npm install -g
 
-Step 2: Create database called `ufinity` import data.sql and import `db/data.sql`
+Step 2: Create database called `ufinity` and import `db/data.sql`
 
 Step 4: Create `.env` file on root project directory with following contents:
 
