@@ -1,0 +1,271 @@
+<!DOCTYPE HTMl>
+<html>
+
+<head>
+	<title><%= title %></title>
+	<link rel="stylesheet" href="css/markdown.css" />
+	<style>
+		.markdown-body {
+			width: 960px;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="markdown-body">
+		<div class="cl-preview-section">
+			<h2 id="instructions">Instructions</h2>
+		</div>
+		<div class="cl-preview-section">
+			<p><strong>Running Locally</strong></p>
+		</div>
+		<div class="cl-preview-section">
+			<p>Step 1: [command line] $ npm install -g</p>
+		</div>
+		<div class="cl-preview-section">
+			<p>Step 2: Create database called <code>ufinity</code> import data.sql and import <code>db/data.sql</code></p>
+		</div>
+		<div class="cl-preview-section">
+			<p>Step 4: Create <code>.env</code> file on root project directory with following contents:</p>
+		</div>
+		<div class="cl-preview-section">
+			<pre><code>
+        DB_USER=root
+        DB_PASS=
+        DB_DATABASE=ufinity
+        </code></pre>
+		</div>
+		<div class="cl-preview-section">
+			<p>Step 3: [command line] $ <strong>npm start</strong></p>
+		</div>
+		<div class="cl-preview-section">
+			<p>Step 4: (optional) If database error occured during the connection of the app open directory</p>
+		</div>
+		<div class="cl-preview-section">
+			<blockquote>
+				<p>db/connect.js and edit the <code>mysql.createPool({})</code> configuration. Restart the app when applicable</p>
+			</blockquote>
+		</div>
+		<div class="cl-preview-section">
+			<p><strong>To access Unit Test: </strong>
+				<code>$ npm run test</code></p>
+		</div>
+		<div class="cl-preview-section">
+			<p><strong>Heroku URL</strong>: <a href="http://glossy-radio-215012.appspot.com/">http://glossy-radio-215012.appspot.com/</a></p>
+		</div>
+		<div class="cl-preview-section">
+			<h2 id="end-points">End points:</h2>
+		</div>
+		<div class="cl-preview-section">
+			<h4 id="post-httplocalhost3000apiregister">1. [POST] <a href="http://localhost:3000/api/register">http://localhost:3000/api/register</a></h4>
+		</div>
+		<div class="cl-preview-section">
+			<p>A teacher can register multiple students. A student can also be registered to multiple teachers.</p>
+		</div>
+		<div class="cl-preview-section">
+			<p>• Endpoint: POST /api/register</p>
+		</div>
+		<div class="cl-preview-section">
+			<p>• Headers: Content-Type: application/json</p>
+		</div>
+		<div class="cl-preview-section">
+			<p>• Success response status: <strong>HTTP 204</strong></p>
+		</div>
+		<div class="cl-preview-section">
+			<pre><code>Request body example: 
+        {
+            "teacher": "teacherken@gmail.com"
+            "students": [
+                "studentjon@example.com",
+                "studenthon@example.com"
+            ]
+        }
+        </code></pre>
+		</div>
+		<div class="cl-preview-section">
+			<h4 id="get-httplocalhost3000apicommonstudents">2. [GET] <a href="http://localhost:3000/api/commonstudents">http://localhost:3000/api/commonstudents</a></h4>
+		</div>
+		<div class="cl-preview-section">
+			<p>As a teacher, I want to retrieve a list of students common to a given list of teachers (i.e. retrieve students who are registered to ALL of the given teachers).</p>
+		</div>
+		<div class="cl-preview-section">
+			<p>• Endpoint: GET /api/commonstudents</p>
+		</div>
+		<div class="cl-preview-section">
+			<p>• Success response status: HTTP 200</p>
+		</div>
+		<div class="cl-preview-section">
+			<p>• Request example 1: GET /api/commonstudents?teacher=teacherken%<a href="http://40example.com">40example.com</a></p>
+		</div>
+		<div class="cl-preview-section">
+			<p>• Success response body 1:</p>
+		</div>
+		<div class="cl-preview-section">
+			<pre><code>{
+            "students": [
+                "commonstudent1@gmail.com",
+                "commonstudent2@gmail.com",
+                "student_only_under_teacher_ken@gmail.com"
+            ]
+        }
+        </code></pre>
+		</div>
+		<div class="cl-preview-section">
+			<p>• Request example 2: GET /api/commonstudents?teacher=teacherken%<a href="http://40example.com">40example.com</a>&amp;teacher=teacherjoe%<a href="http://40example.com">40example.com</a></p>
+		</div>
+		<div class="cl-preview-section">
+			<p>• Success response body 2:</p>
+		</div>
+		<div class="cl-preview-section">
+			<pre><code>{
+            "students": [
+                "commonstudent1@gmail.com",
+                "commonstudent2@gmail.com"
+            ]
+        
+        }
+        </code></pre>
+		</div>
+		<div class="cl-preview-section">
+			<h4 id="post-httplocalhost3000apisuspend">3. [POST] <a href="http://localhost:3000/api/suspend">http://localhost:3000/api/suspend</a></h4>
+		</div>
+		<div class="cl-preview-section">
+			<p>As a teacher, I want to suspend a specified student.</p>
+		</div>
+		<div class="cl-preview-section">
+			<p>• Endpoint: POST /api/suspend</p>
+		</div>
+		<div class="cl-preview-section">
+			<p>• Headers: Content-Type: application/json</p>
+		</div>
+		<div class="cl-preview-section">
+			<p>• Success response status: HTTP 204</p>
+		</div>
+		<div class="cl-preview-section">
+			<p>• Request body example:</p>
+		</div>
+		<div class="cl-preview-section">
+			<pre><code>
+        {
+            "student" : "studentmary@gmail.com"
+        }
+        
+        </code></pre>
+		</div>
+		<div class="cl-preview-section">
+			<h4 id="post-httplocalhost3000apiretrievefornotifications">4. [POST] <a href="http://localhost:3000/api/retrievefornotifications">http://localhost:3000/api/retrievefornotifications</a></h4>
+		</div>
+		<div class="cl-preview-section">
+			<p>As a teacher, I want to retrieve a list of students who can receive a given notification.</p>
+		</div>
+		<div class="cl-preview-section">
+			<p>• A notification consists of:</p>
+		</div>
+		<div class="cl-preview-section">
+			<ul>
+				<li>
+					<p>the teacher who is sending the notification, and</p>
+				</li>
+				<li>
+					<p>the text of the notification itself.</p>
+				</li>
+			</ul>
+		</div>
+		<div class="cl-preview-section">
+			<p>To receive notifications from e.g. ‘teacherken@example.com’, a student:</p>
+		</div>
+		<div class="cl-preview-section">
+			<p>MUST NOT be suspended,</p>
+		</div>
+		<div class="cl-preview-section">
+			<p>AND MUST fulfill AT LEAST ONE of the following:</p>
+		</div>
+		<div class="cl-preview-section">
+			<ul>
+				<li>
+					<p>i. is registered with “teacherken@example.com"</p>
+				</li>
+				<li>
+					<p>ii. has been @mentioned in the notification</p>
+				</li>
+			</ul>
+		</div>
+		<div class="cl-preview-section">
+			<p>The list of students retrieved should not contain any duplicates/repetitions.</p>
+		</div>
+		<div class="cl-preview-section">
+			<p>• Endpoint: POST /api/retrievefornotifications</p>
+		</div>
+		<div class="cl-preview-section">
+			<p>• Headers: Content-Type: application/json</p>
+		</div>
+		<div class="cl-preview-section">
+			<p>• Success response status: HTTP 200</p>
+		</div>
+		<div class="cl-preview-section">
+			<p>• Request body example 1:</p>
+		</div>
+		<div class="cl-preview-section">
+			<pre><code>{
+            "teacher": "teacherken@example.com",
+            "notification": "Hello students! @studentagnes@example.com @studentmiche@example.com"
+        }
+        </code></pre>
+		</div>
+		<div class="cl-preview-section">
+			<p>• Success response body 1:</p>
+		</div>
+		<div class="cl-preview-section">
+			<pre><code>{
+            "recipients": [
+                "studentbob@example.com",
+                "studentagnes@example.com",
+                "studentmiche@example.com"
+            ]
+        }
+        </code></pre>
+		</div>
+		<div class="cl-preview-section">
+			<p>In the example above, <code>studentagnes@example.com and studentmiche@example.com</code> can receive the notification from <code>teacherken@example.com</code>, regardless whether they are registered to him, because they are @mentioned in the notification text. <code>studentbob@example.com however</code>, has to be registered to <code>teacherken@example.com.</code></p>
+		</div>
+		<div class="cl-preview-section">
+			<p>• Request body example 2:</p>
+		</div>
+		<div class="cl-preview-section">
+			<pre><code>{
+            "teacher": "teacherken@example.com",
+            "notification": "Hey everybody"
+        }
+        </code></pre>
+		</div>
+		<div class="cl-preview-section">
+			<p>• Success response body 2:</p>
+		</div>
+		<div class="cl-preview-section">
+			<pre><code>{
+            "recipients": [
+                "studentbob@example.com",
+            ]
+        }
+        </code></pre>
+		</div>
+		<div class="cl-preview-section">
+			<h2 id="error-responses">Error Responses</h2>
+		</div>
+		<div class="cl-preview-section">
+			<p>For all the above API endpoints, error responses should:</p>
+		</div>
+		<div class="cl-preview-section">
+			<p>have an appropriate HTTP response code</p>
+		</div>
+		<div class="cl-preview-section">
+			<p>have a JSON response body containing a meaningful error message:</p>
+		</div>
+		<div class="cl-preview-section">
+			<p><code>{ "message": "Some meaningful error message" }</code></p>
+		</div>
+	</div>
+</body>
+
+</html>

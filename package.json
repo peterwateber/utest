@@ -1,0 +1,32 @@
+{
+	"name": "ufinity",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "gulp dev",
+		"start": "node server.js",
+		"test": "mocha --watch --recursive test.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"body-parser": "^1.18.3",
+		"chai": "^4.1.2",
+		"chai-http": "^4.0.0",
+		"dotenv": "^6.1.0",
+		"ejs": "^2.6.1",
+		"express": "^4.16.3",
+		"gulp": "^3.9.1",
+		"gulp-nodemon": "^2.2.1",
+		"jquery": "^3.3.1",
+		"lodash": "^4.17.11",
+		"mocha": "^5.2.0",
+		"mysql": "^2.16.0",
+		"nock": "^10.0.1",
+		"nodemon": "^1.18.3",
+		"pug": "^2.0.3",
+		"sinon": "^6.1.5"
+	}
+}

@@ -1,0 +1,8 @@
+runtime: nodejs8
+env_variables:
+  DB_USER: db_admin
+  DB_PASS: 123qweasd
+  DB_DATABASE: ufinity
+  DB_HOST: localhost
+  DB_PORT: 3306
+  INSTANCE_CONNECTION_NAME: glossy-radio-215012:asia-east1:mysql-instance

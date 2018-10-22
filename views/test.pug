@@ -1,0 +1,19 @@
+doctype html
+html(lang="en")
+  head
+    title= title
+    link(href="css/mocha.css", rel="stylesheet")
+  body
+    div(id="mocha")
+    script(src="js/jquery.min.js")
+    script(src="js/mocha.js")
+    script(src="js/sinon.js")
+    script(src="js/chai.js")
+    script(src="js/chai-http.js")
+    script.
+        mocha.setup('bdd');
+        chai.use(chaiHttp);
+    script(src="js/test.js")
+    script.
+        mocha.checkLeaks();
+        mocha.run();
